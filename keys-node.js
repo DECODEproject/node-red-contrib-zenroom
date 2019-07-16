@@ -7,7 +7,7 @@ module.exports = function(RED) {
 
     node.on("input", function(msg) {
       const script = node.source;
-      msg.payload = msg.payload || script;
+      msg.zenroom_keys = JSON.parse(script || msg.payload);
       node.send(msg);
     });
   }

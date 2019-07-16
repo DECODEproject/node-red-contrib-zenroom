@@ -10,10 +10,19 @@ module.exports = function(RED) {
       const script = node.source;
       let result = "";
       let error = "";
-
+      var ctx = this.context();
+      
+      if (!ctx.get('data'))
+        ctx.set('data', msg.zenroom_data || null)
+      
+      if (!ctx.get('keys'))
+        ctx.set('keys', msg.zenroom_keys || null)
+      
       zenroom
         .script(script)
         .print(o => { result = o; })
+        .data(ctx.get('data'))
+        .keys(ctx.get('keys'))
         .success(() => {
           node.send({ payload: result });
           setSuccess(node);
