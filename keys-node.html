@@ -1,17 +1,17 @@
-<script type="text/x-red" data-template-name="zencode">
+<script type="text/x-red" data-template-name="KEYS">
   <div class="form-row">
     <label for="node-input-name"><i class="icon-tag"></i> Name</label>
-    <input type="text" id="node-input-name" placeholder="Zencode">
+    <input type="text" id="node-input-name" placeholder="KEYS">
   </div>
 
   <div class="form-row" style="position: relative; margin-bottom: 0px;">
-    <label for="node-input-source"><i class="fa fa-file-code-o"></i> Code</label>
+    <label for="node-input-source"><i class="fa fa-file-code-o"></i> KEYS</label>
     <input type="hidden" id="node-input-source" autofocus="autofocus">
     <div style="position: absolute; right:0;display:inline-block; text-align: right; font-size: 0.8em;">
         Format:
         <select id="node-input-format" style="width:110px; font-size: 10px !important;  height: 24px; padding:0;">
-            <option value="text">Zencode</option>
-            <option value="javascript">Lua</option>
+            <option value="json">json</option>
+            <option value="text">text</option>
         </select>
     </div>
   </div>
@@ -22,20 +22,19 @@
 </script>
 
 <script type="text/javascript">
-  RED.nodes.registerType('zencode', {
+  RED.nodes.registerType('KEYS', {
     category: 'crypto',
-    color: '#ffadbd',
+    color: '#FDF0C2',
     defaults: {
       name: { value: "" },
-      format: { value: "javascript" },
-      source: { value: "print('Hello World!')", required: true },
+      format: { value: "json" },
+      source: { value: "" },
     },
     inputs: 1,
     outputs: 1,
-    outputLabels: ['exec result'],
     icon: "zenroom.png",
     label: function () {
-      return this.name || "zencode"
+      return this.name || "KEYS"
     },
     labelStyle: function () {
       return this.name ? "node_label_italic" : ""
@@ -81,8 +80,8 @@
   });
 </script>
 
-<script type="text/x-red" data-help-name="zencode">
-  <p>A simple node that executes a zencode lua script passed as a message payloads</p>
+<script type="text/x-red" data-help-name="KEYS">
+  <p>A simple node that get a input and send it to zencode node or the json buffer as a input</p>
   <h3>Outputs</h3>
   <dl class="message-properties">
   <dt>payload

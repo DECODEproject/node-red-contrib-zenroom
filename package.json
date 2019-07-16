@@ -8,7 +8,9 @@
   "license": "AGPL-3.0",
   "node-red": {
     "nodes": {
-      "zencode": "zencode-node.js"
+      "zencode": "zencode-node.js",
+      "DATA": "data-node.js",
+      "KEYS": "keys-node.js"
     }
   },
   "dependencies": {
