@@ -18,7 +18,7 @@ module.exports = function(RED) {
       if (!ctx.get('keys'))
         ctx.set('keys', msg.zenroom_keys || null)
       
-      zenroom
+      const Z = zenroom
         .script(script)
         .print(o => { result = o; })
         .data(ctx.get('data'))
@@ -31,7 +31,11 @@ module.exports = function(RED) {
           node.error(error, msg);
           setFailure(node);
         })
-        .zenroom_exec();
+      
+      if (config.format === 'text')
+        Z.zencode_exec()
+      else
+        Z.zenroom_exec()
     });
   }
 
