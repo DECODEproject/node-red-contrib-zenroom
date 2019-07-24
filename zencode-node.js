@@ -20,7 +20,7 @@ module.exports = function(RED) {
       
       const Z = zenroom
         .script(script)
-        .print(o => { result = o; })
+        .print(o => { result += o; result += '\n'})
         .data(ctx.get('data'))
         .keys(ctx.get('keys'))
         .success(() => {
